@@ -61,7 +61,7 @@ func TestNewEdge(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			e, err := edge.NewEdge(tt.startNodeID, tt.endNodeID, tt.kind, tt.properties)
+			e, err := edge.NewEdge(tt.startNodeID, tt.endNodeID, tt.kind, "id", "id", tt.properties)
 
 			if tt.expectError {
 				if err == nil {
@@ -90,7 +90,7 @@ func TestNewEdge(t *testing.T) {
 }
 
 func TestEdgeProperties(t *testing.T) {
-	e, err := edge.NewEdge("start1", "end1", "CONNECTS_TO", nil)
+	e, err := edge.NewEdge("start1", "end1", "CONNECTS_TO", "id", "id", nil)
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
 	}
@@ -114,9 +114,9 @@ func TestEdgeProperties(t *testing.T) {
 }
 
 func TestEdgeEqual(t *testing.T) {
-	e1, _ := edge.NewEdge("start1", "end1", "CONNECTS_TO", nil)
-	e2, _ := edge.NewEdge("start1", "end1", "CONNECTS_TO", nil)
-	e3, _ := edge.NewEdge("start2", "end2", "CONNECTS_TO", nil)
+	e1, _ := edge.NewEdge("start1", "end1", "CONNECTS_TO", "id", "id", nil)
+	e2, _ := edge.NewEdge("start1", "end1", "CONNECTS_TO", "id", "id", nil)
+	e3, _ := edge.NewEdge("start2", "end2", "CONNECTS_TO", "id", "id", nil)
 
 	if !e1.Equal(e2) {
 		t.Error("expected identical edges to be equal")
@@ -135,7 +135,7 @@ func TestEdgeToDict(t *testing.T) {
 	props := properties.NewProperties()
 	props.SetProperty("weight", 10)
 
-	e, _ := edge.NewEdge("start1", "end1", "CONNECTS_TO", props)
+	e, _ := edge.NewEdge("start1", "end1", "CONNECTS_TO", "id", "id", props)
 
 	dict := e.ToDict()
 
@@ -173,7 +173,7 @@ func TestEdgeToDict(t *testing.T) {
 }
 
 func TestEdgeString(t *testing.T) {
-	e, _ := edge.NewEdge("start1", "end1", "CONNECTS_TO", nil)
+	e, _ := edge.NewEdge("start1", "end1", "CONNECTS_TO", "id", "id", nil)
 	str := e.String()
 	expected := "Edge(start='start1', end='end1', kind='CONNECTS_TO', properties=map[])"
 	if str != expected {

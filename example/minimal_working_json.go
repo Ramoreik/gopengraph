@@ -37,6 +37,8 @@ func main() {
 		bobNode.GetID(),   // Bob is the start
 		aliceNode.GetID(), // Alice is the end
 		"Knows",
+		"id",
+		"id",
 		nil,
 	)
 

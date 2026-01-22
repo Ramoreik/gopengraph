@@ -662,10 +662,10 @@ func (g *OpenGraph) FromJSON(jsonData string) error {
 	// Then import edges
 	for _, e := range openGraphDocument.Graph.Edges {
 		// Only 'id' is supported for match_by
-		if e.Start.MatchBy != "" && e.Start.MatchBy != "id" {
+		if e.Start.MatchBy != "" && e.Start.MatchBy != "id" && e.Start.MatchBy != "name" {
 			return fmt.Errorf("unsupported start.match_by '%s' for edge kind '%s'", e.Start.MatchBy, e.Kind)
 		}
-		if e.End.MatchBy != "" && e.End.MatchBy != "id" {
+		if e.End.MatchBy != "" && e.End.MatchBy != "id" && e.End.MatchBy != "name" {
 			return fmt.Errorf("unsupported end.match_by '%s' for edge kind '%s'", e.End.MatchBy, e.Kind)
 		}
 
@@ -676,7 +676,8 @@ func (g *OpenGraph) FromJSON(jsonData string) error {
 			props = properties.NewProperties()
 		}
 
-		newEdge, err := edge.NewEdge(e.Start.Value, e.End.Value, e.Kind, props)
+		newEdge, err := edge.NewEdge(e.Start.Value, e.End.Value,
+			e.Kind, e.Start.MatchBy, e.End.MatchBy, props)
 		if err != nil {
 			return fmt.Errorf("invalid edge (%s -> %s, kind '%s'): %w", e.Start.Value, e.End.Value, e.Kind, err)
 		}

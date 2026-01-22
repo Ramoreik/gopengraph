@@ -14,14 +14,16 @@ import (
 // - https://bloodhound.specterops.io/opengraph/schema#edges
 // - https://bloodhound.specterops.io/opengraph/schema#minimal-working-json
 type Edge struct {
-	startNodeID string
-	endNodeID   string
-	kind        string
-	properties  *properties.Properties
+	startNodeID      string
+	endNodeID        string
+	kind             string
+	startNodeMatchBy string
+	endNodeMatchBy   string
+	properties       *properties.Properties
 }
 
 // NewEdge creates a new Edge instance
-func NewEdge(startNodeID string, endNodeID string, kind string, p *properties.Properties) (*Edge, error) {
+func NewEdge(startNodeID string, endNodeID string, kind string, startNodeMatchBy string, endNodeMatchBy string, p *properties.Properties) (*Edge, error) {
 	if startNodeID == "" {
 		return nil, fmt.Errorf("start node ID cannot be empty")
 	}
@@ -34,6 +36,14 @@ func NewEdge(startNodeID string, endNodeID string, kind string, p *properties.Pr
 
 	if p == nil {
 		p = properties.NewProperties()
+	}
+
+	if endNodeMatchBy != "id" && endNodeMatchBy != "name" {
+		return nil, fmt.Errorf("end node match_by cannot be anything other than id or name")
+	}
+
+	if startNodeMatchBy != "id" && startNodeMatchBy != "name" {
+		return nil, fmt.Errorf("start node match_by cannot be anything other than id or name")
 	}
 
 	return &Edge{
@@ -70,11 +80,11 @@ func (e *Edge) ToDict() map[string]interface{} {
 		"kind": e.kind,
 		"start": map[string]string{
 			"value":    e.startNodeID,
-			"match_by": "id",
+			"match_by": e.startNodeMatchBy,
 		},
 		"end": map[string]string{
 			"value":    e.endNodeID,
-			"match_by": "id",
+			"match_by": e.endNodeMatchBy,
 		},
 	}
 

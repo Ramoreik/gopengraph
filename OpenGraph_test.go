@@ -136,11 +136,11 @@ func TestFindPaths(t *testing.T) {
 	g.AddNode(n3)
 
 	// Create edges
-	e1, err := edge.NewEdge("1", "2", "CONNECTS_TO", properties.NewProperties())
+	e1, err := edge.NewEdge("1", "2", "CONNECTS_TO", "id", "id", properties.NewProperties())
 	if err != nil {
 		t.Fatalf("Failed to create edge: %v", err)
 	}
-	e2, err := edge.NewEdge("2", "3", "CONNECTS_TO", properties.NewProperties())
+	e2, err := edge.NewEdge("2", "3", "CONNECTS_TO", "id", "id", properties.NewProperties())
 	if err != nil {
 		t.Fatalf("Failed to create edge: %v", err)
 	}
@@ -190,11 +190,11 @@ func TestGetConnectedComponents(t *testing.T) {
 	g.AddNode(n3)
 	g.AddNode(n4)
 
-	e1, err := edge.NewEdge("1", "2", "CONNECTS_TO", properties.NewProperties())
+	e1, err := edge.NewEdge("1", "2", "CONNECTS_TO", "id", "id", properties.NewProperties())
 	if err != nil {
 		t.Fatalf("Failed to create edge: %v", err)
 	}
-	e2, err := edge.NewEdge("3", "4", "CONNECTS_TO", properties.NewProperties())
+	e2, err := edge.NewEdge("3", "4", "CONNECTS_TO", "id", "id", properties.NewProperties())
 	if err != nil {
 		t.Fatalf("Failed to create edge: %v", err)
 	}
@@ -245,6 +245,8 @@ func TestJSONioInvolution(t *testing.T) {
 		bobNode.GetID(),   // Bob is the start
 		aliceNode.GetID(), // Alice is the end
 		"Knows",
+		"id",
+		"id",
 		nil,
 	)
 
