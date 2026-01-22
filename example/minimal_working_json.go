@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/TheManticoreProject/gopengraph"
-	"github.com/TheManticoreProject/gopengraph/edge"
-	"github.com/TheManticoreProject/gopengraph/node"
-	"github.com/TheManticoreProject/gopengraph/properties"
+	"github.com/Ramoreik/gopengraph"
+	"github.com/Ramoreik/gopengraph/edge"
+	"github.com/Ramoreik/gopengraph/node"
+	"github.com/Ramoreik/gopengraph/properties"
 )
 
 func main() {

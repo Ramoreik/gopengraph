@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/TheManticoreProject/gopengraph/properties"
+	"github.com/Ramoreik/gopengraph/properties"
 )
 
 func TestNewProperties(t *testing.T) {

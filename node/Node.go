@@ -3,7 +3,7 @@ package node
 import (
 	"fmt"
 
-	"github.com/TheManticoreProject/gopengraph/properties"
+	"github.com/Ramoreik/gopengraph/properties"
 )
 
 // Node represents a node in the OpenGraph.

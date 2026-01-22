@@ -3,8 +3,8 @@ package edge_test
 import (
 	"testing"
 
-	"github.com/TheManticoreProject/gopengraph/edge"
-	"github.com/TheManticoreProject/gopengraph/properties"
+	"github.com/Ramoreik/gopengraph/edge"
+	"github.com/Ramoreik/gopengraph/properties"
 )
 
 func TestNewEdge(t *testing.T) {

@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/TheManticoreProject/gopengraph/edge"
-	"github.com/TheManticoreProject/gopengraph/node"
-	"github.com/TheManticoreProject/gopengraph/properties"
+	"github.com/Ramoreik/gopengraph/edge"
+	"github.com/Ramoreik/gopengraph/node"
+	"github.com/Ramoreik/gopengraph/properties"
 )
 
 // OpenGraph struct for managing a graph structure compatible with BloodHound OpenGraph.

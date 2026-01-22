@@ -3,7 +3,7 @@ package edge
 import (
 	"fmt"
 
-	"github.com/TheManticoreProject/gopengraph/properties"
+	"github.com/Ramoreik/gopengraph/properties"
 )
 
 // Edge represents a directed edge in the OpenGraph.
