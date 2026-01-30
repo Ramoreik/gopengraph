@@ -677,7 +677,7 @@ func (g *OpenGraph) FromJSON(jsonData string) error {
 		}
 
 		newEdge, err := edge.NewEdge(e.Start.Value, e.End.Value,
-			e.Kind, e.Start.MatchBy, e.End.MatchBy, props)
+			e.Kind, e.Start.MatchBy, e.End.MatchBy, "Base", "Base", props)
 		if err != nil {
 			return fmt.Errorf("invalid edge (%s -> %s, kind '%s'): %w", e.Start.Value, e.End.Value, e.Kind, err)
 		}

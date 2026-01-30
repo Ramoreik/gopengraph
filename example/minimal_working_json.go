@@ -39,6 +39,8 @@ func main() {
 		"Knows",
 		"id",
 		"id",
+		"Base",
+		"Base",
 		nil,
 	)
 

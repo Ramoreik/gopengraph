@@ -19,13 +19,17 @@ type Edge struct {
 	endNodeID        string
 	kind             string
 	startNodeMatchBy string
+	startNodeKind    string
 	endNodeMatchBy   string
+	endNodeKind      string
 	properties       *properties.Properties
 }
 
 // NewEdge creates a new Edge instance
 func NewEdge(startNodeID string, endNodeID string, kind string,
-	startNodeMatchBy string, endNodeMatchBy string, p *properties.Properties) (*Edge, error) {
+	startNodeMatchBy string, endNodeMatchBy string,
+	startNodeKind string, endNodeKind string,
+	p *properties.Properties) (*Edge, error) {
 	if startNodeID == "" {
 		return nil, fmt.Errorf("start node ID cannot be empty")
 	}
@@ -48,6 +52,14 @@ func NewEdge(startNodeID string, endNodeID string, kind string,
 		startNodeMatchBy = "id"
 	}
 
+	if startNodeKind == "" {
+		return nil, fmt.Errorf("edge start node kind cannot be empty")
+	}
+
+	if endNodeKind == "" {
+		return nil, fmt.Errorf("edge end node kind cannot be empty")
+	}
+
 	if endNodeMatchBy != "id" && endNodeMatchBy != "name" {
 		return nil, fmt.Errorf("end node match_by cannot be anything other than id or name")
 	}
@@ -62,7 +74,9 @@ func NewEdge(startNodeID string, endNodeID string, kind string,
 		kind:             kind,
 		properties:       p,
 		startNodeMatchBy: startNodeMatchBy,
+		startNodeKind:    startNodeKind,
 		endNodeMatchBy:   endNodeMatchBy,
+		endNodeKind:      endNodeKind,
 	}, nil
 }
 
