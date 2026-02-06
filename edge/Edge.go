@@ -107,10 +107,12 @@ func (e *Edge) ToDict() map[string]interface{} {
 		"start": map[string]string{
 			"value":    e.startNodeID,
 			"match_by": e.startNodeMatchBy,
+			"kind":     e.startNodeKind,
 		},
 		"end": map[string]string{
 			"value":    e.endNodeID,
 			"match_by": e.endNodeMatchBy,
+			"kind":     e.endNodeKind,
 		},
 	}
 
